@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATRAC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="d-flex justify-content-between">
+                    <h3 class="mb-0">Items</h3>
+                    <a class="px-3 btn btn-sm border text-dark"><i class="fa-solid fa-plus me-1"></i>Adicionar</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 col-sm-12" id="items">
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="d-flex justify-content-between">
+                    <h3 class="mb-0">Refeições</h3>
+                    <a class="px-3 btn btn-sm border text-dark"><i class="fa-solid fa-plus me-1"></i>Adicionar</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 col-sm-12" id="meals">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tablesContainer = document.getElementById("meals");
+    
+        const meals = [
+        {
+            name: "Refeição 1",
+            items: [
+                { descricao: "Item 1", carboidratos: "200g", proteinas: "40g", gorduras: "10g", calorias: "504kcal" },
+                { descricao: "Item 2", carboidratos: "150g", proteinas: "35g", gorduras: "8g", calorias: "430kcal" }
+            ]
+        },
+        {
+            name: "Refeição 2",
+            items: [
+                { descricao: "Item 1", carboidratos: "180g", proteinas: "38g", gorduras: "9g", calorias: "470kcal" },
+                { descricao: "Item 2", carboidratos: "210g", proteinas: "42g", gorduras: "11g", calorias: "530kcal" }
+            ]
+        },
+        {
+            name: "Refeição 3",
+            items: [
+                { descricao: "Item 1", carboidratos: "220g", proteinas: "50g", gorduras: "12g", calorias: "560kcal" },
+                { descricao: "Item 2", carboidratos: "200g", proteinas: "45g", gorduras: "10g", calorias: "500kcal" }
+            ]
+        },
+        {
+            name: "Refeição 4",
+            items: [
+                { descricao: "Item 1", carboidratos: "170g", proteinas: "32g", gorduras: "9g", calorias: "450kcal" },
+                { descricao: "Item 2", carboidratos: "190g", proteinas: "40g", gorduras: "11g", calorias: "490kcal" }
+            ]
+        }
+    ];
+    
+    meals.forEach(meal => {
+        let tableHTML = `
+            <div class="d-flex justify-content-between">
+                <h6 class="mb-3">${meal.name}</h6>
+
+                <div>
+                    <a href="">Editar</a>
+                    <a href="">Excluir</a>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped mb-5">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Carboidratos</th>
+                        <th>Proteínas</th>
+                        <th>Gorduras</th>
+                        <th>Calorias</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        meal.items.forEach(item => {
+            tableHTML += `
+                <tr>
+                    <td>${item.descricao}</td>
+                    <td>${item.carboidratos}</td>
+                    <td>${item.proteinas}</td>
+                    <td>${item.gorduras}</td>
+                    <td>${item.calorias}</td>
+                </tr>
+            `;
+        });
+
+        tableHTML += `
+                </tbody>
+            </table>
+        `;
+
+        tablesContainer.innerHTML += tableHTML;
+    });
+    </script>
+</body>
+</html>
